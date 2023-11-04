@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Lab1</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <header>Гуренков Максим Сергеевич, P3230, 1102</header>
         <main>
             <img src="images/graph.png" alt="картинка не загрузилась :-(" width="300px">
-            <form action="" method="post" onsubmit="return validate()">
+            <form onsubmit="ajax(); return false;">
                 <div id="inputX">
                     <label>Выберите X</label>
                     <label><input type="checkbox" class="xValue" value="-4" onclick="removeOtherSelections(this)">-4</label>
@@ -39,6 +39,7 @@
             </form>
         </main> <!-- форма + картинка -->
         <aside>Боковая часть сайта</aside> <!-- Вывод -->
-        <script src="inputForm.js"></script>
+        <script src="js/inputForm.js"></script>
+        <script src="js/ajax.js"></script>
     </body>
 </html>
