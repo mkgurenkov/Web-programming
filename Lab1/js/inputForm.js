@@ -4,11 +4,17 @@ var yValue = document.getElementById("yValue");
 
 function changeRValue(button) {
     if (button.id == "upButton") {
-        if (rValue.value == 5) {rValue.value = -1}
-        rValue.value ++;
+        if (rValue.value == 5) {
+            rValue.value = 0
+        } else {
+            rValue.value ++;
+        }
     } else {
-        if (rValue.value == 0) {rValue.value = 6}
-        rValue.value --;
+        if (rValue.value == 0) {
+            rValue.value = 5
+        } else {
+            rValue.value --;
+        }
     }
 }
 
@@ -26,17 +32,25 @@ function validate() {
     for (var i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked == true) {
             xIsValid = true;
+            document.getElementById("xInvalid").innerHTML = null;
         }
     }
-    if ((Number(yValue.value) > -3) && (Number(yValue.value) < 3)) {
+    if ((parseFloat(yValue.value) > -3) && (parseFloat(yValue.value) < 3)) {
         yIsValid = true;
+        document.getElementById("yInvalid").innerHTML = null;
     }
     
     if (!xIsValid) {
-        console.log("x не валиден");
+        document.getElementById("xInvalid").innerHTML = "Выберите значение X";
     }
     if (!yIsValid) {
-        console.log("y не валиден");
+        if (yValue.value.trim() == "")  {
+            document.getElementById("yInvalid").innerHTML = "Введите значение Y";
+        } else if (!Number.isFinite(parseFloat(yValue.value))) {
+            document.getElementById("yInvalid").innerHTML = "Y должен быть числом";
+        } else {
+            document.getElementById("yInvalid").innerHTML = "Y должен принимать значения (-3; 3)";
+        }
     }
     return xIsValid && yIsValid;
 }
