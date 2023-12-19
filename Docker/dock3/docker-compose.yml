@@ -1,0 +1,10 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - 6733:6733
+  client:
+    build: ./client
+    ports:
+      - 6700:6700  
+    
