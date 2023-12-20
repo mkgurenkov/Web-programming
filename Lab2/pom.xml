@@ -5,9 +5,9 @@
    <modelVersion>4.0.0</modelVersion>
 
    <groupId>com.nibibee</groupId>
-   <artifactId>Lab2_fin</artifactId>
-   <version>1.0-SNAPSHOT</version>
-   <name>Lab2_fin</name>
+   <artifactId>Lab2</artifactId>
+   <version>1.0</version>
+   <name>Lab2</name>
    <packaging>war</packaging>
 
    <properties>

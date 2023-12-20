@@ -1,31 +1,33 @@
+package servlets;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import support.TableRow;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.Math;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import support.Validator;
 
 public class AreaCheckerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         long startTime = System.nanoTime();
         RequestDispatcher dispatcher = request.getRequestDispatcher("ajax.jsp");
         PrintWriter out = response.getWriter();
         try {
             JSONObject json = new JSONObject(request.getParameter("data"));
-            String x = (String) json.get("x");
-            String y = (String) json.get("y");
-            String r = (String) json.get("r");
+            String x = json.get("x").toString();
+            String y = json.get("y").toString();
+            String r = json.get("r").toString();
             Validator validator = new Validator(x, y, r);
             if (validator.validate_data()) {
                 long endTime = System.nanoTime();
@@ -72,6 +74,7 @@ public class AreaCheckerServlet extends HttpServlet {
             row.setHit("miss");
         }
         table.add(row);
+        session.setAttribute("table", table);
     }
     private String getTime() {
         LocalDateTime localDateTime = LocalDateTime.now();

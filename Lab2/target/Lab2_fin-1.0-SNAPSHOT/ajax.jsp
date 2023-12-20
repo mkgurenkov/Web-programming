@@ -1,8 +1,11 @@
+<%@ page import="java.util.List" %>
+<%@ page import="table.TableRow" %>
+<% List<TableRow> table = (List<TableRow>) session.getAttribute("table"); %>
 <tr>
-<td><%= request.getAttribute("x") %></td>
-<td><%= request.getAttribute("y") %></td>
-<td><%= request.getAttribute("r") %></td>
-<td><%= request.getAttribute("hit") %></td>
-<td><%= request.getAttribute("time") %></td>
-<td><%= request.getAttribute("currentTime") %></td>
+<td> <%= table.get(table.size() - 1).getX() %></td>
+<td> <%= table.get(table.size() - 1).getY() %></td>
+<td> <%= table.get(table.size() - 1).getR() %></td>
+<td> <%= table.get(table.size() - 1).getHit() %></td>
+<td> <%= table.get(table.size() - 1).getExecutionTime() %></td>
+<td> <%= table.get(table.size() - 1).getCurrentTime() %></td>
 </tr>

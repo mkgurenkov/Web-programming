@@ -1,3 +1,5 @@
+package support;
+
 public class TableRow {
     private String x;
     private String y;
@@ -9,6 +11,7 @@ public class TableRow {
         this.x = x;
         this.y = y;
         this.r = r;
+        this.hit = hit;
         this.executionTime = executionTime;
         this.currentTime = currentTime;
     }

@@ -1,4 +1,4 @@
-/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/ControllerServlet.java
-/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/AreaCheckerServlet.java
-/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/Validator.java
-/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/TableRow.java
+/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/support/TableRow.java
+/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/support/Validator.java
+/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/servlets/AreaCheckerServlet.java
+/home/mgurenkov/Desktop/ITMO/2_курс/Web-programming/Lab2/src/main/java/servlets/ControllerServlet.java

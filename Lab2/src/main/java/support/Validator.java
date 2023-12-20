@@ -1,7 +1,9 @@
+package support;
+
 public class Validator {
-    private String str_x;
-    private String str_y;
-    private String str_r;
+    private final String str_x;
+    private final String str_y;
+    private final String str_r;
     public Validator(String str_x, String str_y, String str_r) {
         this.str_x = str_x;
         this.str_y = str_y;
@@ -20,6 +22,6 @@ public class Validator {
     }
     private boolean validate_r() throws NumberFormatException {
         int r = Integer.parseInt(str_r);
-        return (r >= 0) && (r <= 5);
+        return (r > 0) && (r <= 5);
     }
 }

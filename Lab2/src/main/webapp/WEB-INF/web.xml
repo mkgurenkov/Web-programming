@@ -7,17 +7,17 @@
 
     <servlet>
         <servlet-name>ControllerServlet</servlet-name>
-        <servlet-class>ControllerServlet</servlet-class>
+        <servlet-class>servlets.ControllerServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/ControllerServlet</url-pattern>
+        <url-pattern>/main-page</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>AreaCheckerServlet</servlet-name>
-        <servlet-class>AreaCheckerServlet</servlet-class>
+        <servlet-class>servlets.AreaCheckerServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

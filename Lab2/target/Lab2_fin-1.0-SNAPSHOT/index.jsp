@@ -1,10 +1,9 @@
 <%@ page import="java.util.List" %>
-<%@ page import="jakarta.servlet.http.HttpSession" %>
-<!DOCTYPE html>
-<html>
+<%@ page import="table.TableRow" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <head>
         <meta charset="UTF-8">
-        <title>Lab1</title>
+        <title>Lab2</title>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
@@ -68,16 +67,18 @@
                     </thead>
                 <tbody align="center" id="tableBody">
                     <% List<TableRow> table = (List<TableRow>) session.getAttribute("table");
-                       for (int i = 0; i < table.size(); i ++) { %>
-                           <tr>
-                           <td> <%= table.get(i).getX() %></td>
-                           <td> <%= table.get(i).getY() %></td>
-                           <td> <%= table.get(i).getR() %></td>
-                           <td> <%= table.get(i).getHit() %></td>
-                           <td> <%= table.get(i).getExecutionTime() %></td>
-                           <td> <%= table.get(i).getCurrentTime() %></td>
-                           </tr>
-                       <%}%>
+                        if (table != null) {
+                           for (int i = 0; i < table.size(); i ++) { %>
+                               <tr>
+                               <td> <%= table.get(i).getX() %></td>
+                               <td> <%= table.get(i).getY() %></td>
+                               <td> <%= table.get(i).getR() %></td>
+                               <td> <%= table.get(i).getHit() %></td>
+                               <td> <%= table.get(i).getExecutionTime() %></td>
+                               <td> <%= table.get(i).getCurrentTime() %></td>
+                               </tr>
+                           <%}
+                        }%>
                 </tbody>
                 </table></div>
             </div>
