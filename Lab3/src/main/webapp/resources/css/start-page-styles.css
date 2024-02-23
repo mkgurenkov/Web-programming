@@ -1,0 +1,27 @@
+body {
+    background-color: #A6CFD5;
+}
+.ui-button {
+    background-color: #613DC1!important;
+    border-color: #613DC1!important;
+}
+
+#headerBlock {
+    font-size: 20px;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#clock {
+    width: 200px;
+}
+
+body {
+    margin-top: 50px;
+}
+

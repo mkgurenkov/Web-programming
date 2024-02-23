@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h:outputStylesheet library="css" name="main-page-styles.css"/>
+    </h:head>
+    <h:body>
+        <error-page></error-page>
+        <div id = "formBlock">
+            <h:form id="form">
+                <div id="inputX" class="inputFields">
+                    <label class="formLabels">Введите X</label>
+                    <p:selectOneRadio id="xValue" value="#{point.x}" required="true" requiredMessage="Установите X">
+                        <f:selectItem itemValue="-4" itemLabel="-4"/>
+                        <f:selectItem itemValue="-3" itemLabel="-3" />
+                        <f:selectItem itemValue="-2" itemLabel="-2" />
+                        <f:selectItem itemValue="-1" itemLabel="-1" />
+                        <f:selectItem itemValue="0" itemLabel="0" />
+                        <f:selectItem itemValue="1" itemLabel="1" />
+                        <f:selectItem itemValue="2" itemLabel="2" />
+                        <f:selectItem itemValue="3" itemLabel="3" />
+                        <f:selectItem itemValue="4" itemLabel="4" />
+                    </p:selectOneRadio>
+                    <h:message id="errorX" class="inputErrors errors" for="xValue"/>
+                </div>
+                <div id="inputY" class="inputFields">
+                    <label class="formLabels">Введите Y</label>
+                    <p:inputText id="yValue" value="#{point.y}" required="true"
+                                 requiredMessage="Введите Y"
+                                 converterMessage="Значение должно быть числом"
+                                 validatorMessage="Y определен от 3 до -3 не включительно">
+                        <f:convertNumber />
+                        <f:validateDoubleRange minimum="-2.9" maximum="2.9" />
+                    </p:inputText>
+                    <h:message id="errorY" class="inputErrors errors" for="yValue" />
+                </div>
+
+                <div id="inputR" class="inputFields">
+                    <label class="formLabels">Введите R</label>
+                    <p:spinner id="rValue" value="#{point.r}" min="0" max="3" stepFactor="0.5" onkeypress="return false" onchange="drawImage(this.value), drawDots()">
+                        <f:validator validatorId="radiusValidator" />
+                    </p:spinner>
+                    <h:message id="errorR" class="inputErrors errors" for="rValue" />
+                </div>
+
+                <div id="formButtons" class="inputFields">
+                    <p:commandButton value="Submit" type="button" action="#{appManager.run}">
+                        <f:ajax execute="@form" render="output errorX errorY errorR" onevent="(e) => {if (e.status === 'success') drawDots()}"/>
+                    </p:commandButton>
+                    <p:commandButton value="Reset" type="reset" />
+                </div>
+            </h:form>
+        </div>
+        <div id="canvasBlock">
+            <h:form id="canvasForm">
+                <h:inputHidden id="xValueCanvas" value="#{point.x}" validatorMessage="Точка лежит вне области определения">
+                    <f:validateDoubleRange minimum="-4" maximum="4" />
+                </h:inputHidden>
+                <h:inputHidden id="yValueCanvas" value="#{point.y}" validatorMessage="Точка лежит вне области определения">
+                    <f:validateDoubleRange minimum="-2.9" maximum="2.9" />
+                </h:inputHidden>
+                <h:inputHidden id="rValueCanvas" value="#{point.r}">
+                    <f:validator validatorId="radiusValidator" />
+                </h:inputHidden>
+                <div id="canvasErrors">
+                    <h:message id="xCanvasError" class="errors" for="xValueCanvas" style="display: none" />
+                    <h:message id="yCanvasError" class="errors" for="yValueCanvas" style="display: none" />
+                    <h:message id="rCanvasError" class="errors" for="rValueCanvas" style="display: none" />
+                </div>
+                <h:commandButton id="canvasSenderButton" style="display: none" action="#{appManager.run}">
+                    <f:ajax execute="@form" render="output xCanvasError yCanvasError rCanvasError" onevent="(e) => {if (e.status === 'success') {drawDots(); manageCanvasErrorMessages();}}" />
+                </h:commandButton>
+            </h:form>
+            <canvas id = "canvas" width="400px" height="400px"></canvas>
+            <h:form id="clearButtonForm">
+                <p:commandButton id="clearButton" value="Clear" width="150px" type="button" action="#{resultTable.clear}">
+                    <f:ajax execute="@form" render="output" onevent="(e) => {if (e.status === 'success') drawImage(document.getElementById('form:rValue_input').value)}" />
+                </p:commandButton>
+            </h:form>
+        </div>
+        <div id="navigationBlock">
+            <h:form>
+                <p:commandButton value="в начало" action="toStart" />
+            </h:form>
+        </div>
+        <div id="outputBlock">
+            <p:dataTable id="output" var="result" value="#{resultTable.results}" emptyMessage=""
+            tableStyleClass="results-table">
+            <p:column headerText="X">
+                <h:outputText class="XValues" value="#{result.point.x}"/>
+            </p:column>
+            <p:column headerText="Y">
+                <h:outputText class="YValues" value="#{result.point.y}"/>
+            </p:column>
+
+            <p:column headerText="R">
+                <h:outputText class="RValues" value="#{result.point.r}"/>
+            </p:column>
+
+            <p:column headerText="Hit">
+                <h:outputText class="HitValues" value="#{result.hit}"/>
+            </p:column>
+
+            <p:column headerText="Execution time">
+                <h:outputText class="ExecTimeValues" value="#{result.executionTime}"/>
+            </p:column>
+
+            <p:column headerText="Current time">
+                <h:outputText class="CurrTimeValues" value="#{result.currentTime}"/>
+            </p:column>
+        </p:dataTable>
+        </div>
+        <h:outputScript library="js" name="canvas.js"/>
+    </h:body>
+</html>

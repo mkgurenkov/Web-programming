@@ -1,0 +1,95 @@
+body {
+    background-color: #A6CFD5;
+}
+
+.ui-button {
+    background-color: #613DC1!important;
+    border-color: #613DC1!important;
+}
+
+#outputBlock {
+    float: right;
+    width: 800px;
+    display: inline-block;
+    position: relative;
+    top: 100px;
+    right: 50px;
+    border: 1px solid black;
+}
+
+
+#canvasBlock {
+    float: left;
+    display: inline-block;
+        position: fixed;
+            top: 70px;
+            left: 700px;
+
+}
+
+.errors {
+    color: red;
+}
+
+.inputErrors:not([id="form:errorX"]) {
+    margin-left: 10px;
+}
+
+[id="form:errorX"] {
+    position: relative;
+    top: 3px;
+}
+
+#clearButtonForm {
+    display: flex;
+    justify-content: center;
+}
+
+#formButtons button {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#canvasErrors {
+    height: 40px;
+    text-align: center;
+    font-size: larger;
+}
+
+#canvas {
+    border: 1px solid black;
+}
+#formBlock {
+    float: left;
+    display: inline-block;
+        position: fixed;
+            top: 200px;
+            left: 50px;
+            border: 1px solid black;
+            background-color: #C8D8D3;
+            padding: 15px;
+
+}
+
+#navigationBlock {
+    float: top;
+    display: inline-block;
+    position: fixed;
+    top: 150px;
+    left: 50px;
+}
+
+
+.formLabels {
+    margin-right: 10px;
+}
+
+#formButtons {
+    margin-top: 10px;
+}
+
+.inputFields {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
