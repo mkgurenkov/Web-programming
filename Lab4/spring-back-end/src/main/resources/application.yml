@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bitnami_keycloak
+    username: bn_keycloak
+    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/Lab4
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8081/realms/Lab4
+        registration:
+          keycloak:
+            client-id: Lab4_backend
+            client-secret: DVfEG8naSIKHlWZGDuXertNPJUv0ClaH
+            scope: openid
+server:
+  port: 8080

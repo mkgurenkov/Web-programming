@@ -4,8 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 !**/src/main/resources/static/
-**/data/
-/src/
+!**/data/
 
 ### STS ###
 .apt_generated
