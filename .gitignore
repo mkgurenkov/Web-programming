@@ -1,4 +1,3 @@
-# Intellij idea catalogs
-**/out/**
-**/target/**
-**/.idea/**
+out/
+target/
+.idea/
